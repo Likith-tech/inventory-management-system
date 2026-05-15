@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-heading">
+  <div>
+    <h1>Sales Entry</h1>
+    <p>Record sales and reduce product stock automatically.</p>
+  </div>
+</div>
+
+<div class="row g-4">
+  <div class="col-lg-4">
+    <div class="content-panel">
+      <form method="post">
+        {{ form.hidden_tag() }}
+        <div class="mb-3">
+          {{ form.product_id.label(class="form-label") }}
+          {{ form.product_id(class="form-select") }}
+        </div>
+        <div class="mb-3">
+          {{ form.quantity.label(class="form-label") }}
+          {{ form.quantity(class="form-control") }}
+        </div>
+        <div class="mb-3">
+          {{ form.selling_price.label(class="form-label") }}
+          {{ form.selling_price(class="form-control") }}
+        </div>
+        {{ form.submit(class="btn btn-primary w-100") }}
+      </form>
+    </div>
+  </div>
+  <div class="col-lg-8">
+    <div class="content-panel">
+      <h2>Recent Sales</h2>
+      <table class="table table-hover align-middle">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Product</th>
+            <th>Qty</th>
+            <th>Price</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for sale in sales %}
+          <tr>
+            <td>{{ sale.sale_date.strftime('%d-%m-%Y') }}</td>
+            <td>{{ sale.product.name }}</td>
+            <td>{{ sale.quantity }}</td>
+            <td>₹{{ "%.2f"|format(sale.selling_price) }}</td>
+            <td>₹{{ "%.2f"|format(sale.total_amount) }}</td>
+          </tr>
+          {% else %}
+          <tr><td colspan="5" class="text-center py-4">No sales entries yet.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

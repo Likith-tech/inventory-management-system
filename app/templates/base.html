@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ title }} - Inventory Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-secondary">
+      <div class="container-fluid px-4">
+        <a class="navbar-brand fw-semibold" href="{{ url_for('dashboard.index') }}">Inventory MS</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          {% if current_user.is_authenticated %}
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('dashboard.index') }}">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('products.list_products') }}">Products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('categories.list_categories') }}">Categories</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('suppliers.list_suppliers') }}">Suppliers</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('stock.stock_in') }}">Stock In</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('sales.create_sale') }}">Sales</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('reports.index') }}">Reports</a>
+            </li>
+          </ul>
+          <div class="d-flex align-items-center gap-3 text-white-50">
+            <span>{{ current_user.username }}</span>
+            <a class="btn btn-sm btn-outline-light" href="{{ url_for('auth.logout') }}">Logout</a>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+
+    <main class="container-fluid px-4 py-4">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+      {% endif %}
+      {% endwith %}
+
+      {% block content %}{% endblock %}
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  </body>
+</html>

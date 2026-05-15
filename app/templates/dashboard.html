@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-heading">
+  <div>
+    <h1>Dashboard</h1>
+    <p>Overview of products, sales, and stock health.</p>
+  </div>
+</div>
+
+<div class="row g-3 mb-4">
+  <div class="col-md-4 col-xl-2">
+    <div class="metric-card">
+      <span>Products</span>
+      <strong>{{ stats.products }}</strong>
+    </div>
+  </div>
+  <div class="col-md-4 col-xl-2">
+    <div class="metric-card">
+      <span>Categories</span>
+      <strong>{{ stats.categories }}</strong>
+    </div>
+  </div>
+  <div class="col-md-4 col-xl-2">
+    <div class="metric-card">
+      <span>Suppliers</span>
+      <strong>{{ stats.suppliers }}</strong>
+    </div>
+  </div>
+  <div class="col-md-4 col-xl-2">
+    <div class="metric-card">
+      <span>Today's Sales</span>
+      <strong>₹{{ "%.2f"|format(stats.today_sales) }}</strong>
+    </div>
+  </div>
+  <div class="col-md-4 col-xl-2">
+    <div class="metric-card danger">
+      <span>Low Stock</span>
+      <strong>{{ stats.low_stock }}</strong>
+    </div>
+  </div>
+  <div class="col-md-4 col-xl-2">
+    <div class="metric-card">
+      <span>Sales Entries</span>
+      <strong>{{ stats.transactions }}</strong>
+    </div>
+  </div>
+</div>
+
+<div class="content-panel">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Low Stock Alert</h2>
+    <a href="{{ url_for('products.list_products') }}" class="btn btn-sm btn-outline-primary">View Products</a>
+  </div>
+  {% if low_stock_products %}
+  <div class="table-responsive">
+    <table class="table table-hover align-middle">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>SKU</th>
+          <th>Quantity</th>
+          <th>Limit</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for product in low_stock_products %}
+        <tr>
+          <td>{{ product.name }}</td>
+          <td>{{ product.sku }}</td>
+          <td><span class="badge text-bg-danger">{{ product.quantity }}</span></td>
+          <td>{{ product.low_stock_limit }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+  <p class="empty-state">No low stock products right now.</p>
+  {% endif %}
+</div>
+{% endblock %}

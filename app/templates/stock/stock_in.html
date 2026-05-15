@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-heading">
+  <div>
+    <h1>Incoming Stock</h1>
+    <p>Add purchased or received stock. Product quantity updates automatically.</p>
+  </div>
+</div>
+
+<div class="row g-4">
+  <div class="col-lg-4">
+    <div class="content-panel">
+      <form method="post">
+        {{ form.hidden_tag() }}
+        <div class="mb-3">
+          {{ form.product_id.label(class="form-label") }}
+          {{ form.product_id(class="form-select") }}
+        </div>
+        <div class="mb-3">
+          {{ form.supplier_id.label(class="form-label") }}
+          {{ form.supplier_id(class="form-select") }}
+        </div>
+        <div class="mb-3">
+          {{ form.quantity.label(class="form-label") }}
+          {{ form.quantity(class="form-control") }}
+        </div>
+        <div class="mb-3">
+          {{ form.note.label(class="form-label") }}
+          {{ form.note(class="form-control", rows="3") }}
+        </div>
+        {{ form.submit(class="btn btn-primary w-100") }}
+      </form>
+    </div>
+  </div>
+  <div class="col-lg-8">
+    <div class="content-panel">
+      <h2>Recent Stock Entries</h2>
+      <table class="table table-hover align-middle">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Product</th>
+            <th>Supplier</th>
+            <th>Quantity</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for entry in entries %}
+          <tr>
+            <td>{{ entry.created_at.strftime('%d-%m-%Y') }}</td>
+            <td>{{ entry.product.name }}</td>
+            <td>{{ entry.supplier.name if entry.supplier else '-' }}</td>
+            <td>{{ entry.quantity }}</td>
+          </tr>
+          {% else %}
+          <tr><td colspan="4" class="text-center py-4">No stock entries yet.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,84 @@
+body {
+    background-color: #f4f6f8;
+    color: #1f2937;
+}
+
+.table th, .table td {
+    vertical-align: middle;
+}
+
+.page-heading {
+    align-items: center;
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+}
+
+.page-heading h1,
+.content-panel h2,
+.login-card h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.page-heading p,
+.login-card p {
+    color: #64748b;
+    margin: .25rem 0 0;
+}
+
+.content-panel,
+.metric-card,
+.login-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, .04);
+    padding: 1.25rem;
+}
+
+.metric-card span {
+    color: #64748b;
+    display: block;
+    font-size: .85rem;
+}
+
+.metric-card strong {
+    display: block;
+    font-size: 1.75rem;
+    margin-top: .35rem;
+}
+
+.metric-card.danger {
+    border-color: #fecaca;
+}
+
+.form-panel {
+    max-width: 920px;
+}
+
+.login-shell {
+    display: grid;
+    min-height: calc(100vh - 110px);
+    place-items: center;
+}
+
+.login-card {
+    max-width: 420px;
+    width: 100%;
+}
+
+.empty-state {
+    color: #64748b;
+    margin: 0;
+    padding: 1rem 0;
+}
+
+@media (max-width: 768px) {
+    .page-heading {
+        align-items: stretch;
+        flex-direction: column;
+    }
+}
