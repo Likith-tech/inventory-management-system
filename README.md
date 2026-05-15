@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Inventory Management System
 
 Professional Flask mini project for managing products, categories, suppliers, incoming stock, sales, low stock alerts, and reports.
@@ -103,3 +104,6 @@ Flask would provide JSON APIs such as:
 - `GET /api/reports`
 
 React would handle the user interface, while Flask would manage authentication, database logic, reports, and exports.
+=======
+# inventory-management-system
+>>>>>>> 407e03cbaa5d37a8120bfa7c3eac0d5c37c47a27
