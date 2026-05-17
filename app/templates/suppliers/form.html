@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+﻿{% extends "base.html" %}
 
 {% block content %}
 <div class="page-heading"><h1>{{ title }}</h1></div>
@@ -9,18 +9,22 @@
       <div class="col-md-6">
         {{ form.name.label(class="form-label") }}
         {{ form.name(class="form-control") }}
+        {% with field=form.name %}{% include "_form_errors.html" %}{% endwith %}
       </div>
       <div class="col-md-6">
         {{ form.email.label(class="form-label") }}
         {{ form.email(class="form-control") }}
+        {% with field=form.email %}{% include "_form_errors.html" %}{% endwith %}
       </div>
       <div class="col-md-6">
         {{ form.phone.label(class="form-label") }}
         {{ form.phone(class="form-control") }}
+        {% with field=form.phone %}{% include "_form_errors.html" %}{% endwith %}
       </div>
       <div class="col-12">
         {{ form.address.label(class="form-label") }}
         {{ form.address(class="form-control", rows="3") }}
+        {% with field=form.address %}{% include "_form_errors.html" %}{% endwith %}
       </div>
     </div>
     <div class="mt-4">
@@ -30,3 +34,4 @@
   </form>
 </div>
 {% endblock %}
+

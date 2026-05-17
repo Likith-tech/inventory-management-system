@@ -1,109 +1,105 @@
-<<<<<<< HEAD
-# Inventory Management System
+# Flask Inventory Management System
 
-Professional Flask mini project for managing products, categories, suppliers, incoming stock, sales, low stock alerts, and reports.
+A production-ready inventory management system built with Flask, PostgreSQL, and Bootstrap.
+
+## Feature Highlights
+
+- Role-based authentication for admin, manager, and staff users
+- Product, category, supplier, and customer management
+- Stock-in workflow with product quantity updates
+- Sales tracking with automatic inventory deduction
+- Low-stock alerts and dashboard attention banner
+- Reorder suggestions based on recent sales velocity
+- Profit and loss reporting
+- Inventory, low-stock, product, category, and customer sales reports
+- CSV and PDF report exports
+- Activity audit log for important user actions
+- In-app notifications with unread counts
+- Chart.js analytics dashboard
+- Alembic-ready database migrations through Flask-Migrate
+- Optional Sentry error tracking and public health check endpoint
 
 ## Tech Stack
 
-- Python Flask
-- SQLite
-- SQLAlchemy
-- Flask Login
-- Flask-WTF
-- Bootstrap 5
-- JavaScript
+| Layer | Technology |
+| --- | --- |
+| Backend | Python 3.12 / Flask 3.0 |
+| ORM | SQLAlchemy + Flask-Migrate (Alembic) |
+| Database | PostgreSQL (production) / SQLite (development) |
+| Auth | Flask-Login + Werkzeug password hashing |
+| Forms | Flask-WTF + WTForms with CSRF protection |
+| PDF Export | ReportLab |
+| Email | Flask-Mail |
+| Frontend | Bootstrap + Chart.js |
+| Deployment | Gunicorn + Render |
 
-## How To Run
+## Architecture Overview
 
-```powershell
-.\venv\Scripts\activate
+The app uses Flask's application factory pattern, with each product domain split into its own blueprint under `app/routes/`. Business logic that belongs outside request handlers lives in `app/services/`, while SQLAlchemy models live in `app/models/`. Configuration is environment-aware, with development, production, and testing classes in `config.py`.
+
+## Quick Start
+
+```bash
+git clone <repo-url>
+cd Inventory_app
+python -m venv venv
+venv\Scripts\activate
 pip install -r requirements.txt
-python app.py
+copy .env.example .env
+flask db upgrade
+flask run
 ```
 
-Open:
+Set `ADMIN_PASSWORD` in `.env` before first run if you want the development admin user created automatically.
+
+## Environment Variables
+
+| Variable | Required | Description |
+| --- | --- | --- |
+| `SECRET_KEY` | Production | Flask session and CSRF signing key |
+| `DATABASE_URL` | Production | PostgreSQL connection URL; SQLite is used locally when omitted |
+| `DATABASE_SSL_REQUIRE` | Optional | Adds `sslmode=require` to PostgreSQL URLs by default |
+| `ADMIN_USERNAME` | Optional | Default admin username |
+| `ADMIN_EMAIL` | Optional | Default admin email |
+| `ADMIN_PASSWORD` | Optional | Default admin password for local bootstrap |
+| `MAIL_SERVER` | Optional | SMTP host |
+| `MAIL_PORT` | Optional | SMTP port |
+| `MAIL_USE_TLS` | Optional | Enable SMTP TLS |
+| `MAIL_USERNAME` | Optional | SMTP username |
+| `MAIL_PASSWORD` | Optional | SMTP password |
+| `MAIL_DEFAULT_SENDER` | Optional | Sender address for email alerts |
+| `SENTRY_DSN` | Optional | Enables Sentry Flask and SQLAlchemy integrations |
+
+## Running Tests
+
+```bash
+pytest tests/ -v
+```
+
+## Deployment
+
+See `DEPLOYMENT.md` for full deployment details. For Render, provision PostgreSQL, set the environment variables above, run `flask db upgrade`, and start with Gunicorn.
+
+## Project Structure
 
 ```text
-http://127.0.0.1:5000
+app/
+├── forms/
+├── models/
+├── routes/
+├── services/
+├── static/
+│   ├── css/
+│   └── js/
+├── templates/
+│   ├── admin/
+│   ├── auth/
+│   ├── products/
+│   ├── reports/
+│   └── sales/
+└── utils/
 ```
 
-Default login:
+## License
 
-```text
-Username: admin
-Password: admin123
-```
-
-## File Purpose
-
-- `app.py`: Starts the Flask server.
-- `config.py`: Stores app settings, database path, and default admin credentials.
-- `app/__init__.py`: Creates the Flask app, initializes extensions, registers blueprints, and creates tables.
-- `app/models/`: SQLAlchemy database models.
-- `app/forms/`: Flask-WTF form classes and validation.
-- `app/routes/`: Flask Blueprint route files for each feature.
-- `app/services/`: Business logic such as stock updates and report export.
-- `app/utils/`: Small helper functions.
-- `app/templates/`: HTML pages.
-- `app/static/`: CSS and JavaScript files.
-
-## Development Roadmap
-
-1. Authentication and dashboard.
-2. Product, category, and supplier management.
-3. Incoming stock and sales entry.
-4. Automatic stock quantity update.
-5. Low stock alert.
-6. Date-filtered reports.
-7. CSV and PDF export.
-8. Future API layer for React frontend.
-
-## VS Code Setup
-
-1. Open the `Inventory_app` folder in VS Code.
-2. Select the Python interpreter from `venv/Scripts/python.exe`.
-3. Open a terminal in VS Code.
-4. Activate the virtual environment.
-5. Run `python app.py`.
-
-## GitHub Workflow
-
-```powershell
-git init
-git add .
-git commit -m "Initial inventory management system"
-git branch -M main
-git remote add origin <your-github-repo-url>
-git push -u origin main
-```
-
-Team workflow:
-
-- Create a branch for each feature.
-- Pull the latest `main` before starting work.
-- Commit small changes with clear messages.
-- Open pull requests for review.
-- Avoid editing the same file together without coordination.
-
-## Future React + Flask Architecture
-
-Later, this project can be split into:
-
-```text
-frontend/  React app
-backend/   Flask REST API
-```
-
-Flask would provide JSON APIs such as:
-
-- `POST /api/login`
-- `GET /api/products`
-- `POST /api/products`
-- `POST /api/stock-in`
-- `POST /api/sales`
-- `GET /api/reports`
-
-React would handle the user interface, while Flask would manage authentication, database logic, reports, and exports.
-=======
-# inventory-management-system
->>>>>>> 407e03cbaa5d37a8120bfa7c3eac0d5c37c47a27
+MIT

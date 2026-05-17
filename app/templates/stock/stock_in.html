@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+﻿{% extends "base.html" %}
 
 {% block content %}
 <div class="page-heading">
@@ -16,18 +16,22 @@
         <div class="mb-3">
           {{ form.product_id.label(class="form-label") }}
           {{ form.product_id(class="form-select") }}
+          {% with field=form.product_id %}{% include "_form_errors.html" %}{% endwith %}
         </div>
         <div class="mb-3">
           {{ form.supplier_id.label(class="form-label") }}
           {{ form.supplier_id(class="form-select") }}
+          {% with field=form.supplier_id %}{% include "_form_errors.html" %}{% endwith %}
         </div>
         <div class="mb-3">
           {{ form.quantity.label(class="form-label") }}
           {{ form.quantity(class="form-control") }}
+          {% with field=form.quantity %}{% include "_form_errors.html" %}{% endwith %}
         </div>
         <div class="mb-3">
           {{ form.note.label(class="form-label") }}
           {{ form.note(class="form-control", rows="3") }}
+          {% with field=form.note %}{% include "_form_errors.html" %}{% endwith %}
         </div>
         {{ form.submit(class="btn btn-primary w-100") }}
       </form>
@@ -62,3 +66,4 @@
   </div>
 </div>
 {% endblock %}
+

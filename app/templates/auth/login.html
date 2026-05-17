@@ -1,22 +1,25 @@
-{% extends "base.html" %}
+﻿{% extends "base.html" %}
 
 {% block content %}
 <div class="login-shell">
   <div class="login-card">
     <h1>Inventory Login</h1>
-    <p>Use the default account: <strong>admin</strong> / <strong>admin123</strong></p>
+    <p class="text-muted">Sign in with your assigned inventory account.</p>
     <form method="post">
       {{ form.hidden_tag() }}
       <div class="mb-3">
         {{ form.username.label(class="form-label") }}
         {{ form.username(class="form-control") }}
+        {% with field=form.username %}{% include "_form_errors.html" %}{% endwith %}
       </div>
       <div class="mb-3">
         {{ form.password.label(class="form-label") }}
         {{ form.password(class="form-control") }}
+        {% with field=form.password %}{% include "_form_errors.html" %}{% endwith %}
       </div>
       {{ form.submit(class="btn btn-primary w-100") }}
     </form>
   </div>
 </div>
 {% endblock %}
+

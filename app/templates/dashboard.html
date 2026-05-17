@@ -1,82 +1,220 @@
-{% extends "base.html" %}
+﻿{% extends "base.html" %}
 
 {% block content %}
 <div class="page-heading">
   <div>
-    <h1>Dashboard</h1>
-    <p>Overview of products, sales, and stock health.</p>
+    <h1>Analytics Dashboard</h1>
+    <p>Key performance indicators and visual insights.</p>
   </div>
 </div>
 
-<div class="row g-3 mb-4">
-  <div class="col-md-4 col-xl-2">
-    <div class="metric-card">
-      <span>Products</span>
-      <strong>{{ stats.products }}</strong>
-    </div>
+<div class="container-fluid py-3">
+  {% set out_count = low_stock_products | selectattr('quantity', 'eq', 0) | list | length %}
+  {% if stats.low_stock_count > 0 %}
+  <div id="low-stock-banner" class="alert alert-{{ 'danger' if out_count > 0 else 'warning' }} alert-dismissible fade show" role="alert">
+    <strong>{{ stats.low_stock_count }} product{{ 's' if stats.low_stock_count != 1 }} need{{ '' if stats.low_stock_count != 1 else 's' }} attention.</strong>
+    {% if out_count > 0 %}{{ out_count }} out of stock.{% endif %}
+    <a class="alert-link" href="{{ url_for('reports.index') }}">View report &rarr;</a>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
-  <div class="col-md-4 col-xl-2">
-    <div class="metric-card">
-      <span>Categories</span>
-      <strong>{{ stats.categories }}</strong>
-    </div>
-  </div>
-  <div class="col-md-4 col-xl-2">
-    <div class="metric-card">
-      <span>Suppliers</span>
-      <strong>{{ stats.suppliers }}</strong>
-    </div>
-  </div>
-  <div class="col-md-4 col-xl-2">
-    <div class="metric-card">
-      <span>Today's Sales</span>
-      <strong>₹{{ "%.2f"|format(stats.today_sales) }}</strong>
-    </div>
-  </div>
-  <div class="col-md-4 col-xl-2">
-    <div class="metric-card danger">
-      <span>Low Stock</span>
-      <strong>{{ stats.low_stock }}</strong>
-    </div>
-  </div>
-  <div class="col-md-4 col-xl-2">
-    <div class="metric-card">
-      <span>Sales Entries</span>
-      <strong>{{ stats.transactions }}</strong>
-    </div>
-  </div>
-</div>
-
-<div class="content-panel">
-  <div class="d-flex justify-content-between align-items-center mb-3">
-    <h2>Low Stock Alert</h2>
-    <a href="{{ url_for('products.list_products') }}" class="btn btn-sm btn-outline-primary">View Products</a>
-  </div>
-  {% if low_stock_products %}
-  <div class="table-responsive">
-    <table class="table table-hover align-middle">
-      <thead>
-        <tr>
-          <th>Product</th>
-          <th>SKU</th>
-          <th>Quantity</th>
-          <th>Limit</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for product in low_stock_products %}
-        <tr>
-          <td>{{ product.name }}</td>
-          <td>{{ product.sku }}</td>
-          <td><span class="badge text-bg-danger">{{ product.quantity }}</span></td>
-          <td>{{ product.low_stock_limit }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
-  {% else %}
-  <p class="empty-state">No low stock products right now.</p>
   {% endif %}
+
+  <div class="row g-3 mb-4 align-items-stretch">
+    <div class="col-6 col-md-3">
+      <div class="card kpi-card kpi-sales p-3 shadow-sm">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <small class="kpi-label">Total Sales</small>
+            <div class="kpi-value">{{ stats.total_sales|money }}</div>
+          </div>
+          <div class="kpi-icon">
+            <i class="bi bi-currency-dollar fs-2"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-3">
+      <div class="card kpi-card kpi-products p-3 shadow-sm">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <small class="kpi-label">Total Products</small>
+            <div class="kpi-value">{{ stats.total_products }}</div>
+          </div>
+          <div class="kpi-icon kpi-icon-muted">
+            <i class="bi bi-box-seam fs-2"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-3">
+      <div class="card kpi-card kpi-inventory p-3 shadow-sm">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <small class="kpi-label">Inventory Value</small>
+            <div class="kpi-value">${{ '%.2f'|format(stats.inventory_value) }}</div>
+          </div>
+          <div class="kpi-icon kpi-icon-muted">
+            <i class="bi bi-coin fs-2"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-3">
+      <div class="card kpi-card kpi-lowstock p-3 shadow-sm">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <small class="kpi-label">Low Stock Count</small>
+            <div class="kpi-value">{{ stats.low_stock_count }}</div>
+          </div>
+          <div class="kpi-icon kpi-icon-danger">
+            <i class="bi bi-exclamation-triangle fs-2"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card p-3 mb-4">
+    <h5 class="mb-3">Reorder Suggestions</h5>
+    {% if reorder_suggestions %}
+    <div class="table-responsive">
+      <table class="table table-hover align-middle mb-0">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>SKU</th>
+            <th>Stock</th>
+            <th>Avg Daily Sales</th>
+            <th>Days Left</th>
+            <th>Suggested Order</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in reorder_suggestions %}
+          <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.sku }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ '%.2f'|format(item.avg_daily_sales) }}</td>
+            <td><span class="badge text-bg-{{ 'danger' if item.days_remaining <= 7 else 'warning' }}">{{ '%.1f'|format(item.days_remaining) }}</span></td>
+            <td>{{ item.reorder_qty }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+    <p class="text-muted mb-0">All products have sufficient stock.</p>
+    {% endif %}
+  </div>
+
+  <div class="row g-4">
+    <div class="col-lg-8">
+      <div class="card chart-card p-3 position-relative chart-loading" data-chart="salesTrendChart">
+        <div class="chart-overlay" aria-hidden="true">
+          <div class="app-spinner" role="status" aria-label="Loading"></div>
+          <div class="chart-overlay-text">Loading analytics...</div>
+        </div>
+        <div class="d-flex align-items-center justify-content-between mb-2">
+          <h5 class="mb-0">Sales Trend (12 months)</h5>
+        </div>
+        <canvas id="salesTrendChart" height="120"></canvas>
+      </div>
+
+      <div class="card chart-card p-3 mt-4 position-relative chart-loading" data-chart="topProductsChart">
+        <div class="chart-overlay" aria-hidden="true">
+          <div class="app-spinner" role="status" aria-label="Loading"></div>
+          <div class="chart-overlay-text">Loading analytics...</div>
+        </div>
+        <h5 class="mb-2">Top Selling Products</h5>
+        <canvas id="topProductsChart" height="120"></canvas>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="card chart-card p-3 mb-4 position-relative chart-loading" data-chart="inventoryStatusChart">
+        <div class="chart-overlay" aria-hidden="true">
+          <div class="app-spinner" role="status" aria-label="Loading"></div>
+          <div class="chart-overlay-text">Loading analytics...</div>
+        </div>
+        <h5 class="mb-2">Inventory Status</h5>
+        <canvas id="inventoryStatusChart" height="200"></canvas>
+      </div>
+
+      <div class="card chart-card p-3 position-relative chart-loading" data-chart="categoryChart">
+        <div class="chart-overlay" aria-hidden="true">
+          <div class="app-spinner" role="status" aria-label="Loading"></div>
+          <div class="chart-overlay-text">Loading analytics...</div>
+        </div>
+        <h5 class="mb-2">Product Category Distribution</h5>
+        <canvas id="categoryChart" height="200"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-lg-6">
+      <div class="card p-3 list-panel">
+        <h5 class="mb-3">Recent Transactions</h5>
+        <ul class="list-group list-group-flush app-list">
+          {% for tx in recent_transactions %}
+          <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div>
+              <strong>{{ tx.product.name }}</strong>
+              <div class="small text-muted">Qty: {{ tx.quantity }} &bull; {{ tx.sale_date.strftime('%Y-%m-%d') }}</div>
+            </div>
+            <div class="text-end">{{ tx.total_amount|money }}</div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="card p-3 list-panel">
+        <h5 class="mb-3">Low Stock Items</h5>
+        <ul class="list-group list-group-flush app-list">
+          {% for p in low_stock_products %}
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+              <strong>{{ p.name }}</strong>
+              <div class="small text-muted">SKU: {{ p.sku }}</div>
+            </div>
+            <div class="text-danger text-end">{{ p.quantity }}</div>
+          </li>
+          {% else %}
+          <li class="list-group-item text-muted">No low stock items</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
+
+
+
+<!-- Chart.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
+
+<script>
+  // Pass chart data from Flask
+  const chartData = {{ chart_data | tojson | safe }};
+</script>
+<script>
+  const banner = document.getElementById('low-stock-banner');
+  if (banner) {
+    const key = 'low_stock_dismissed_{{ stats.low_stock_count }}';
+    if (sessionStorage.getItem(key)) {
+      banner.remove();
+    }
+    banner.addEventListener('closed.bs.alert', function () {
+      sessionStorage.setItem(key, '1');
+    });
+  }
+</script>
+<script src="{{ url_for('static', filename='js/analytics.js') }}"></script>
+
 {% endblock %}

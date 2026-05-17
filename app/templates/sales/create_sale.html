@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+﻿{% extends "base.html" %}
 
 {% block content %}
 <div class="page-heading">
@@ -16,14 +16,26 @@
         <div class="mb-3">
           {{ form.product_id.label(class="form-label") }}
           {{ form.product_id(class="form-select") }}
+          <div class="form-text">Choose a product to auto-fill its current selling price.</div>
+          {% with field=form.product_id %}{% include "_form_errors.html" %}{% endwith %}
+        </div>
+        <div class="mb-3">
+          {{ form.customer_id.label(class="form-label") }}
+          {{ form.customer_id(class="form-select") }}
+          {% with field=form.customer_id %}{% include "_form_errors.html" %}{% endwith %}
         </div>
         <div class="mb-3">
           {{ form.quantity.label(class="form-label") }}
           {{ form.quantity(class="form-control") }}
+          {% with field=form.quantity %}{% include "_form_errors.html" %}{% endwith %}
         </div>
         <div class="mb-3">
           {{ form.selling_price.label(class="form-label") }}
           {{ form.selling_price(class="form-control") }}
+          {% with field=form.selling_price %}{% include "_form_errors.html" %}{% endwith %}
+        </div>
+        <div id="sale-total-preview" class="alert alert-info d-none">
+          <strong>Total: </strong><span id="sale-total-value">₹0.00</span>
         </div>
         {{ form.submit(class="btn btn-primary w-100") }}
       </form>
@@ -37,6 +49,7 @@
           <tr>
             <th>Date</th>
             <th>Product</th>
+            <th>Customer</th>
             <th>Qty</th>
             <th>Price</th>
             <th>Total</th>
@@ -47,16 +60,21 @@
           <tr>
             <td>{{ sale.sale_date.strftime('%d-%m-%Y') }}</td>
             <td>{{ sale.product.name }}</td>
+            <td>{{ sale.customer.name if sale.customer else 'Walk-in Customer' }}</td>
             <td>{{ sale.quantity }}</td>
-            <td>₹{{ "%.2f"|format(sale.selling_price) }}</td>
-            <td>₹{{ "%.2f"|format(sale.total_amount) }}</td>
+            <td>{{ sale.selling_price|money }}</td>
+            <td>{{ sale.total_amount|money }}</td>
           </tr>
           {% else %}
-          <tr><td colspan="5" class="text-center py-4">No sales entries yet.</td></tr>
+          <tr><td colspan="6" class="text-center py-4">No sales entries yet.</td></tr>
           {% endfor %}
         </tbody>
       </table>
     </div>
   </div>
 </div>
+<script>
+  window.PRODUCT_PRICES = {{ product_prices | tojson }};
+</script>
 {% endblock %}
+

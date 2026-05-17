@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="page-heading">
+  <div>
+    <h1>{{ title }}</h1>
+    <p>Manage your account settings.</p>
+  </div>
+</div>
+<div class="content-panel form-panel">
+  <form method="post">
+    {{ form.hidden_tag() }}
+    {% for field in form if field.type not in ['CSRFTokenField', 'SubmitField'] %}
+    <div class="mb-3">
+      {{ field.label(class="form-label") }}
+      {% if field.type == 'BooleanField' %}
+        <div class="form-check">{{ field(class="form-check-input") }}</div>
+      {% elif field.type == 'SelectField' %}
+        {{ field(class="form-select") }}
+      {% else %}
+        {{ field(class="form-control") }}
+      {% endif %}
+      {% include "_form_errors.html" %}
+    </div>
+    {% endfor %}
+    {{ form.submit(class="btn btn-primary") }}
+  </form>
+</div>
+{% endblock %}

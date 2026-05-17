@@ -1,0 +1,1565 @@
+2026-05-16 15:30:06,207 WARNING [app] ADMIN_PASSWORD is not set; skipping automatic admin creation.
+2026-05-16 15:30:06,378 INFO [werkzeug] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-05-16 15:30:06,379 INFO [werkzeug] [33mPress CTRL+C to quit[0m
+2026-05-17 10:54:40,095 WARNING [app] ADMIN_PASSWORD is not set; skipping automatic admin creation.
+2026-05-17 10:55:03,081 WARNING [app] ADMIN_PASSWORD is not set; skipping automatic admin creation.
+2026-05-17 10:55:03,113 INFO [werkzeug] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-05-17 10:55:03,115 INFO [werkzeug] [33mPress CTRL+C to quit[0m
+2026-05-17 10:55:31,630 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 10:55:31] "GET /auth/login HTTP/1.1" 200 -
+2026-05-17 10:56:33,306 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 10:56:33] "[32mGET / HTTP/1.1[0m" 302 -
+2026-05-17 10:56:33,328 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 10:56:33] "GET /auth/login?next=/ HTTP/1.1" 200 -
+2026-05-17 10:56:33,878 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 10:56:33] "GET /static/css/style.css HTTP/1.1" 200 -
+2026-05-17 10:56:33,889 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 10:56:33] "GET /static/js/ui.js HTTP/1.1" 200 -
+2026-05-17 10:56:33,893 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 10:56:33] "GET /static/js/main.js HTTP/1.1" 200 -
+2026-05-17 10:56:35,585 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 10:56:35] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-05-17 10:56:52,833 ERROR [app] Exception on /auth/login [POST]
+Traceback (most recent call last):
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: users.profile_image
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\routes\auth.py", line 17, in login
+    user = User.query.filter_by(username=form.username.data).first()
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\orm\query.py", line 2766, in first
+    return self.limit(1)._iter().first()  # type: ignore
+           ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\orm\query.py", line 2864, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+        params,
+        ^^^^^^^
+        execution_options={"_sa_orm_load_options": self.load_options},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2351, in execute
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self,
+        ^^^^^
+    ...<4 lines>...
+        conn,
+        ^^^^^
+    )
+    ^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+        statement, params or {}, execution_options=execution_options
+    )
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1419, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: users.profile_image
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.password_hash AS users_password_hash, users.role AS users_role, users.created_at AS users_created_at, users.profile_image AS users_profile_image, users.bio AS users_bio, users.phone AS users_phone 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('likith', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-05-17 10:56:52,963 ERROR [app] Unhandled application error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+Traceback (most recent call last):
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: users.profile_image
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\routes\auth.py", line 17, in login
+    user = User.query.filter_by(username=form.username.data).first()
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\orm\query.py", line 2766, in first
+    return self.limit(1)._iter().first()  # type: ignore
+           ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\orm\query.py", line 2864, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+        params,
+        ^^^^^^^
+        execution_options={"_sa_orm_load_options": self.load_options},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2351, in execute
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self,
+        ^^^^^
+    ...<4 lines>...
+        conn,
+        ^^^^^
+    )
+    ^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+        statement, params or {}, execution_options=execution_options
+    )
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1419, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: users.profile_image
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.password_hash AS users_password_hash, users.role AS users_role, users.created_at AS users_created_at, users.profile_image AS users_profile_image, users.bio AS users_bio, users.phone AS users_phone 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('likith', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-05-17 10:56:52,985 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 10:56:52] "[35m[1mPOST /auth/login?next=/ HTTP/1.1[0m" 500 -
+2026-05-17 10:56:53,034 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 10:56:53] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 10:56:53,044 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 10:56:53] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 10:56:53,046 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 10:56:53] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 10:56:56,919 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 10:56:56] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2026-05-17 10:56:56,936 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 10:56:56] "GET /auth/login?next=/dashboard HTTP/1.1" 200 -
+2026-05-17 10:56:56,990 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 10:56:56] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 10:56:56,991 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 10:56:56] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 10:56:56,997 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 10:56:56] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 11:08:10,611 WARNING [app] ADMIN_PASSWORD is not set; skipping automatic admin creation.
+2026-05-17 12:11:40,289 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:11:40] "[32mGET / HTTP/1.1[0m" 302 -
+2026-05-17 12:11:40,325 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:11:40] "GET /auth/login?next=/ HTTP/1.1" 200 -
+2026-05-17 12:11:40,382 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:11:40] "GET /static/css/style.css HTTP/1.1" 200 -
+2026-05-17 12:11:40,383 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:11:40] "GET /static/js/ui.js HTTP/1.1" 200 -
+2026-05-17 12:11:40,385 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:11:40] "GET /static/js/main.js HTTP/1.1" 200 -
+2026-05-17 12:11:58,191 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:11:58] "[32mPOST /auth/login?next=/ HTTP/1.1[0m" 302 -
+2026-05-17 12:11:58,244 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:11:58] "GET /dashboard HTTP/1.1" 200 -
+2026-05-17 12:11:58,270 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:11:58] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:11:58,273 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:11:58] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:11:58,278 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:11:58] "GET /static/js/analytics.js HTTP/1.1" 200 -
+2026-05-17 12:11:58,281 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:11:58] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:11:58,289 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:11:58] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:11:58,355 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:11:58] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:12:22,297 ERROR [app] Exception on /profile/ [GET]
+Traceback (most recent call last):
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\routes\profile.py", line 13, in profile
+    @login_required
+               ^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\profile\profile.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\base.html", line 139, in top-level template code
+    <div class="toast-body">{{ message }}</div>
+    ^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\profile\profile.html", line 32, in block 'content'
+    {{ form_image.hidden_tag() }}
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'form_image' is undefined
+2026-05-17 12:12:22,366 ERROR [app] Unhandled application error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+Traceback (most recent call last):
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\routes\profile.py", line 13, in profile
+    @login_required
+               ^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\profile\profile.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\base.html", line 139, in top-level template code
+    <div class="toast-body">{{ message }}</div>
+    ^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\profile\profile.html", line 32, in block 'content'
+    {{ form_image.hidden_tag() }}
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'form_image' is undefined
+2026-05-17 12:12:22,370 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:22] "[35m[1mGET /profile/ HTTP/1.1[0m" 500 -
+2026-05-17 12:12:22,408 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:22] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:12:22,409 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:22] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:12:22,411 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:22] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:12:22,412 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:22] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:12:22,465 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:22] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:12:25,154 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:25] "GET /dashboard HTTP/1.1" 200 -
+2026-05-17 12:12:25,205 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:25] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:12:25,207 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:25] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:12:25,215 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:25] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:12:25,215 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:25] "[36mGET /static/js/analytics.js HTTP/1.1[0m" 304 -
+2026-05-17 12:12:25,218 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:25] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:12:25,271 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:25] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:12:26,388 ERROR [app] Exception on /profile/settings [GET]
+Traceback (most recent call last):
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\routes\profile.py", line 62, in settings
+    error = next(iter(form.image.errors), 'Invalid image file.')
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\profile\settings.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\base.html", line 139, in top-level template code
+    <div class="toast-body">{{ message }}</div>
+    ^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\profile\settings.html", line 13, in block 'content'
+    {{ form.hidden_tag() }}
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'form' is undefined
+2026-05-17 12:12:26,403 ERROR [app] Unhandled application error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+Traceback (most recent call last):
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\routes\profile.py", line 62, in settings
+    error = next(iter(form.image.errors), 'Invalid image file.')
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\profile\settings.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\base.html", line 139, in top-level template code
+    <div class="toast-body">{{ message }}</div>
+    ^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\profile\settings.html", line 13, in block 'content'
+    {{ form.hidden_tag() }}
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'form' is undefined
+2026-05-17 12:12:26,422 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:26] "[35m[1mGET /profile/settings HTTP/1.1[0m" 500 -
+2026-05-17 12:12:26,469 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:26] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:12:26,474 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:26] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:12:26,479 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:26] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:12:26,480 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:26] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:12:26,552 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:26] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:12:27,824 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:27] "GET /products/ HTTP/1.1" 200 -
+2026-05-17 12:12:27,851 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:27] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:12:27,856 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:27] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:12:27,854 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:27] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:12:27,852 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:27] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:12:27,916 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:27] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:12:29,557 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:29] "GET /categories/ HTTP/1.1" 200 -
+2026-05-17 12:12:29,598 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:29] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:12:29,603 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:29] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:12:29,606 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:29] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:12:29,609 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:29] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:12:29,639 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:29] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:12:30,557 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:30] "GET /suppliers/ HTTP/1.1" 200 -
+2026-05-17 12:12:30,596 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:30] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:12:30,601 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:30] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:12:30,606 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:30] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:12:30,609 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:30] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:12:30,639 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:30] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:12:31,818 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:31] "GET /customers/ HTTP/1.1" 200 -
+2026-05-17 12:12:31,866 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:31] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:12:31,872 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:31] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:12:31,871 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:31] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:12:31,875 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:31] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:12:31,901 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:31] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:12:34,531 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:34] "GET /stock/in HTTP/1.1" 200 -
+2026-05-17 12:12:34,581 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:34] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:12:34,583 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:34] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:12:34,586 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:34] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:12:34,594 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:34] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:12:34,631 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:12:34] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:13:04,646 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:04] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:13:10,572 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:10] "[32mGET / HTTP/1.1[0m" 302 -
+2026-05-17 12:13:10,604 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:10] "GET /auth/login?next=/ HTTP/1.1" 200 -
+2026-05-17 12:13:10,650 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:10] "GET /static/css/style.css HTTP/1.1" 200 -
+2026-05-17 12:13:10,956 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:10] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:13:10,956 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:10] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:13:21,170 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:21] "POST /auth/login?next=/ HTTP/1.1" 200 -
+2026-05-17 12:13:21,242 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:21] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:13:21,244 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:21] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:13:21,249 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:21] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:13:29,940 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:29] "[32mPOST /auth/login?next=/ HTTP/1.1[0m" 302 -
+2026-05-17 12:13:29,980 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:29] "GET /dashboard HTTP/1.1" 200 -
+2026-05-17 12:13:30,055 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:30] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:13:30,062 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:30] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:13:30,064 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:30] "GET /static/js/analytics.js HTTP/1.1" 200 -
+2026-05-17 12:13:30,124 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:30] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:13:30,125 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:30] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:13:30,240 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:30] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:13:34,651 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:34] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:13:36,903 ERROR [app] Exception on /profile/settings [GET]
+Traceback (most recent call last):
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\routes\profile.py", line 62, in settings
+    error = next(iter(form.image.errors), 'Invalid image file.')
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\profile\settings.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\base.html", line 139, in top-level template code
+    <div class="toast-body">{{ message }}</div>
+    ^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\profile\settings.html", line 13, in block 'content'
+    {{ form.hidden_tag() }}
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'form' is undefined
+2026-05-17 12:13:36,922 ERROR [app] Unhandled application error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+Traceback (most recent call last):
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\routes\profile.py", line 62, in settings
+    error = next(iter(form.image.errors), 'Invalid image file.')
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\profile\settings.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\base.html", line 139, in top-level template code
+    <div class="toast-body">{{ message }}</div>
+    ^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\profile\settings.html", line 13, in block 'content'
+    {{ form.hidden_tag() }}
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'form' is undefined
+2026-05-17 12:13:36,935 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:36] "[35m[1mGET /profile/settings HTTP/1.1[0m" 500 -
+2026-05-17 12:13:36,990 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:36] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:13:37,002 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:37] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:13:37,005 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:37] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:13:37,006 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:37] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:13:37,064 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:37] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:13:41,088 ERROR [app] Exception on /profile/ [GET]
+Traceback (most recent call last):
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\routes\profile.py", line 13, in profile
+    @login_required
+               ^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\profile\profile.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\base.html", line 139, in top-level template code
+    <div class="toast-body">{{ message }}</div>
+    ^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\profile\profile.html", line 32, in block 'content'
+    {{ form_image.hidden_tag() }}
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'form_image' is undefined
+2026-05-17 12:13:41,099 ERROR [app] Unhandled application error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+Traceback (most recent call last):
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\routes\profile.py", line 13, in profile
+    @login_required
+               ^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\profile\profile.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\base.html", line 139, in top-level template code
+    <div class="toast-body">{{ message }}</div>
+    ^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\profile\profile.html", line 32, in block 'content'
+    {{ form_image.hidden_tag() }}
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'form_image' is undefined
+2026-05-17 12:13:41,111 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:41] "[35m[1mGET /profile/ HTTP/1.1[0m" 500 -
+2026-05-17 12:13:41,158 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:41] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:13:41,167 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:41] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:13:41,170 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:41] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:13:41,174 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:41] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:13:41,226 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:41] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:13:47,232 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:47] "GET /activity-logs/ HTTP/1.1" 200 -
+2026-05-17 12:13:47,275 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:47] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:13:47,279 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:47] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:13:47,281 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:47] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:13:47,286 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:47] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:13:47,337 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:47] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:13:55,886 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:55] "GET /reports/ HTTP/1.1" 200 -
+2026-05-17 12:13:55,956 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:55] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:13:55,964 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:55] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:13:55,975 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:55] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:13:55,978 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:55] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:13:56,090 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:56] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:13:58,473 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:58] "GET /sales/new HTTP/1.1" 200 -
+2026-05-17 12:13:58,521 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:58] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:13:58,526 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:58] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:13:58,530 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:58] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:13:58,532 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:58] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:13:58,606 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:58] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:13:59,695 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:59] "GET /stock/in HTTP/1.1" 200 -
+2026-05-17 12:13:59,747 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:59] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:13:59,750 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:59] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:13:59,754 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:59] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:13:59,757 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:59] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:13:59,822 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:13:59] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:14:01,714 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:01] "GET /customers/ HTTP/1.1" 200 -
+2026-05-17 12:14:01,779 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:01] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:14:01,787 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:01] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:14:01,788 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:01] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:14:01,790 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:01] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:14:01,888 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:01] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:14:03,823 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:03] "GET /dashboard HTTP/1.1" 200 -
+2026-05-17 12:14:03,846 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:03] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:14:03,847 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:03] "[36mGET /static/js/analytics.js HTTP/1.1[0m" 304 -
+2026-05-17 12:14:03,945 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:03] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:14:03,947 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:03] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:14:03,948 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:03] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:14:04,030 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:04] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:14:04,133 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:04] "GET /products/ HTTP/1.1" 200 -
+2026-05-17 12:14:04,186 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:04] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:14:04,191 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:04] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:14:04,194 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:04] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:14:04,195 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:04] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:14:04,277 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:04] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:14:04,650 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:04] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:14:08,391 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:08] "GET /categories/ HTTP/1.1" 200 -
+2026-05-17 12:14:08,455 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:08] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:14:08,458 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:08] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:14:08,462 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:08] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:14:08,466 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:08] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:14:08,556 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:08] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:14:10,656 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:10] "GET /categories/add HTTP/1.1" 200 -
+2026-05-17 12:14:10,701 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:10] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:14:10,708 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:10] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:14:10,713 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:10] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:14:10,715 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:10] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:14:10,788 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:10] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:14:16,424 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:16] "GET /customers/ HTTP/1.1" 200 -
+2026-05-17 12:14:16,470 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:16] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:14:16,474 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:16] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:14:16,476 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:16] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:14:16,483 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:16] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:14:16,710 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:16] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:14:19,538 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:19] "GET /suppliers/ HTTP/1.1" 200 -
+2026-05-17 12:14:19,583 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:19] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:14:19,588 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:19] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:14:19,595 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:19] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:14:19,597 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:19] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:14:19,654 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:19] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:14:21,176 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:21] "GET /suppliers/add HTTP/1.1" 200 -
+2026-05-17 12:14:21,212 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:21] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:14:21,217 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:21] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:14:21,222 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:21] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:14:21,222 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:21] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:14:21,274 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:21] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:14:25,075 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:25] "GET /stock/in HTTP/1.1" 200 -
+2026-05-17 12:14:25,118 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:25] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:14:25,125 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:25] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:14:25,128 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:25] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:14:25,130 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:25] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:14:25,200 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:25] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:14:31,043 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:31] "GET /categories/ HTTP/1.1" 200 -
+2026-05-17 12:14:31,116 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:31] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:14:31,123 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:31] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:14:31,128 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:31] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:14:31,130 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:31] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:14:31,194 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:31] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:14:33,365 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:33] "GET /categories/add HTTP/1.1" 200 -
+2026-05-17 12:14:33,434 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:33] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:14:33,443 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:33] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:14:33,445 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:33] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:14:33,449 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:33] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:14:33,558 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:33] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:14:34,648 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:34] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:14:40,629 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:40] "[32mPOST /categories/add HTTP/1.1[0m" 302 -
+2026-05-17 12:14:40,672 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:40] "GET /categories/ HTTP/1.1" 200 -
+2026-05-17 12:14:40,797 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:40] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:14:40,802 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:40] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:14:40,808 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:40] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:14:40,812 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:40] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:14:40,906 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:40] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:14:45,228 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:45] "GET /categories/ HTTP/1.1" 200 -
+2026-05-17 12:14:45,284 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:45] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:14:45,287 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:45] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:14:45,292 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:45] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:14:45,294 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:45] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:14:45,395 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:45] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:14:45,933 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:45] "GET /suppliers/ HTTP/1.1" 200 -
+2026-05-17 12:14:45,996 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:45] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:14:46,002 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:46] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:14:46,004 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:46] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:14:46,009 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:46] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:14:46,116 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:46] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:14:48,186 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:48] "GET /suppliers/add HTTP/1.1" 200 -
+2026-05-17 12:14:48,234 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:48] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:14:48,240 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:48] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:14:48,252 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:48] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:14:48,256 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:48] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:14:48,327 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:48] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:14:59,601 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:59] "[32mPOST /suppliers/add HTTP/1.1[0m" 302 -
+2026-05-17 12:14:59,640 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:59] "GET /suppliers/ HTTP/1.1" 200 -
+2026-05-17 12:14:59,794 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:59] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:14:59,800 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:59] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:14:59,801 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:59] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:14:59,804 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:59] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:14:59,906 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:14:59] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:15:02,164 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:02] "GET /customers/ HTTP/1.1" 200 -
+2026-05-17 12:15:02,241 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:02] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:15:02,248 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:02] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:15:02,260 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:02] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:15:02,265 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:02] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:15:02,333 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:02] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:15:03,440 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:03] "GET /stock/in HTTP/1.1" 200 -
+2026-05-17 12:15:03,508 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:03] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:15:03,515 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:03] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:15:03,518 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:03] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:15:03,519 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:03] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:15:03,678 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:03] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:15:04,637 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:04] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:15:07,912 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:07] "GET /products/ HTTP/1.1" 200 -
+2026-05-17 12:15:07,986 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:07] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:15:07,998 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:07] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:15:08,003 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:08] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:15:08,009 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:08] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:15:08,114 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:08] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:15:11,019 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:11] "GET /products/add HTTP/1.1" 200 -
+2026-05-17 12:15:11,094 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:11] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:15:11,099 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:11] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:15:11,106 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:11] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:15:11,110 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:11] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:15:11,181 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:11] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:15:34,657 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:34] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:15:38,900 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:38] "[32mPOST /products/add HTTP/1.1[0m" 302 -
+2026-05-17 12:15:38,939 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:38] "GET /products/ HTTP/1.1" 200 -
+2026-05-17 12:15:39,010 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:39] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:15:39,014 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:39] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:15:39,015 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:39] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:15:39,017 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:39] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:15:39,113 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:39] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:15:42,362 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:42] "GET /stock/in HTTP/1.1" 200 -
+2026-05-17 12:15:42,445 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:42] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:15:42,446 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:42] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:15:42,453 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:42] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:15:42,457 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:42] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:15:42,517 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:42] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:15:52,881 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:52] "[32mPOST /stock/in HTTP/1.1[0m" 302 -
+2026-05-17 12:15:52,906 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:52] "GET /stock/in HTTP/1.1" 200 -
+2026-05-17 12:15:52,973 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:52] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:15:52,976 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:52] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:15:52,980 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:52] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:15:52,982 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:52] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:15:53,105 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:53] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:15:58,022 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:58] "GET /sales/new HTTP/1.1" 200 -
+2026-05-17 12:15:58,090 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:58] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:15:58,095 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:58] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:15:58,099 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:58] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:15:58,101 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:58] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:15:58,171 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:15:58] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:16:04,637 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:16:04] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:16:28,191 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:16:28] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:16:34,650 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:16:34] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:16:37,643 ERROR [app] Exception on /sales/new [POST]
+Traceback (most recent call last):
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: database is locked
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\routes\sales.py", line 25, in create_sale
+    sale = record_sale(
+        form.product_id.data,
+    ...<4 lines>...
+        commit=False,
+    )
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\services\inventory_service.py", line 42, in record_sale
+    db.session.flush()
+    ~~~~~~~~~~~~~~~~^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\orm\scoping.py", line 924, in flush
+    return self._proxied.flush(objects=objects)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4331, in flush
+    self._flush(objects)
+    ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4466, in _flush
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 121, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4427, in _flush
+    flush_context.execute()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 466, in execute
+    rec.execute(self)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.mapper,
+        ^^^^^^^^^^^^
+        uow.states_for_mapper_hierarchy(self.mapper, False, False),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        uow,
+        ^^^^
+    )
+    ^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\orm\persistence.py", line 85, in save_obj
+    _emit_update_statements(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        base_mapper,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        update,
+        ^^^^^^^
+    )
+    ^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\orm\persistence.py", line 912, in _emit_update_statements
+    c = connection.execute(
+        statement, multiparams, execution_options=execution_options
+    )
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1419, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) database is locked
+[SQL: UPDATE products SET quantity=?, updated_at=? WHERE products.id = ?]
+[parameters: (10, '2026-05-17 06:46:32.224716', 1)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-05-17 12:16:37,744 ERROR [app] Unhandled application error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+Traceback (most recent call last):
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: database is locked
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\routes\sales.py", line 25, in create_sale
+    sale = record_sale(
+        form.product_id.data,
+    ...<4 lines>...
+        commit=False,
+    )
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\services\inventory_service.py", line 42, in record_sale
+    db.session.flush()
+    ~~~~~~~~~~~~~~~~^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\orm\scoping.py", line 924, in flush
+    return self._proxied.flush(objects=objects)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4331, in flush
+    self._flush(objects)
+    ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4466, in _flush
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 121, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4427, in _flush
+    flush_context.execute()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 466, in execute
+    rec.execute(self)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.mapper,
+        ^^^^^^^^^^^^
+        uow.states_for_mapper_hierarchy(self.mapper, False, False),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        uow,
+        ^^^^
+    )
+    ^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\orm\persistence.py", line 85, in save_obj
+    _emit_update_statements(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        base_mapper,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        update,
+        ^^^^^^^
+    )
+    ^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\orm\persistence.py", line 912, in _emit_update_statements
+    c = connection.execute(
+        statement, multiparams, execution_options=execution_options
+    )
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1419, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) database is locked
+[SQL: UPDATE products SET quantity=?, updated_at=? WHERE products.id = ?]
+[parameters: (10, '2026-05-17 06:46:32.224716', 1)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-05-17 12:16:37,774 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:16:37] "[35m[1mPOST /sales/new HTTP/1.1[0m" 500 -
+2026-05-17 12:16:37,885 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:16:37] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:16:37,914 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:16:37] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:16:37,916 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:16:37] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:16:37,919 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:16:37] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:16:38,160 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:16:38] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:16:42,757 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:16:42] "GET /dashboard HTTP/1.1" 200 -
+2026-05-17 12:16:42,829 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:16:42] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:16:42,834 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:16:42] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:16:42,838 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:16:42] "[36mGET /static/js/analytics.js HTTP/1.1[0m" 304 -
+2026-05-17 12:16:42,839 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:16:42] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:16:42,881 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:16:42] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:16:42,931 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:16:42] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:16:49,291 ERROR [app] Failed to send low stock alert: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials d9443c01a7336-2bd5d0fd279sm108724455ad.62 - gsmtp')
+2026-05-17 12:16:53,265 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:16:53] "GET /reports/ HTTP/1.1" 200 -
+2026-05-17 12:16:53,365 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:16:53] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:16:53,376 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:16:53] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:16:53,392 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:16:53] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:16:53,395 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:16:53] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:16:53,481 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:16:53] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:17:04,636 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:04] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:17:13,609 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:13] "POST /reports/ HTTP/1.1" 200 -
+2026-05-17 12:17:13,672 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:13] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:17:13,685 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:13] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:17:13,689 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:13] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:17:13,689 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:13] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:17:13,969 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:13] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:17:16,088 ERROR [app] Failed to send low stock alert: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-83f19c7c0d6sm10207561b3a.50 - gsmtp')
+2026-05-17 12:17:16,089 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:16] "[32mPOST /sales/new HTTP/1.1[0m" 302 -
+2026-05-17 12:17:23,759 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:23] "POST /notifications/mark_all_read HTTP/1.1" 200 -
+2026-05-17 12:17:23,775 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:23] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:17:27,835 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:27] "GET /suppliers/ HTTP/1.1" 200 -
+2026-05-17 12:17:27,941 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:27] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:17:27,950 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:27] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:17:27,955 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:27] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:17:27,960 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:27] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:17:28,035 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:28] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:17:29,094 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:29] "GET /stock/in HTTP/1.1" 200 -
+2026-05-17 12:17:29,136 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:29] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:17:29,140 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:29] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:17:29,146 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:29] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:17:29,149 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:29] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:17:29,208 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:29] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:17:30,725 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:30] "GET /activity-logs/ HTTP/1.1" 200 -
+2026-05-17 12:17:30,774 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:30] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:17:30,781 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:30] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:17:30,782 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:30] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:17:30,784 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:30] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:17:30,861 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:30] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:17:34,649 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:34] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:17:39,232 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:39] "GET /sales/new HTTP/1.1" 200 -
+2026-05-17 12:17:39,283 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:39] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:17:39,290 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:39] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:17:39,287 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:39] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:17:39,292 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:39] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:17:39,375 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:39] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:17:40,402 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:40] "GET /reports/ HTTP/1.1" 200 -
+2026-05-17 12:17:40,469 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:40] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:17:40,474 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:40] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:17:40,475 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:40] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:17:40,479 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:40] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:17:40,619 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:40] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:17:42,255 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:42] "GET /suppliers/ HTTP/1.1" 200 -
+2026-05-17 12:17:42,306 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:42] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:17:42,314 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:42] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:17:42,321 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:42] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:17:42,323 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:42] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:17:42,390 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:42] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:17:43,505 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:43] "GET /categories/ HTTP/1.1" 200 -
+2026-05-17 12:17:43,548 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:43] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:17:43,558 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:43] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:17:43,565 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:43] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:17:43,570 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:43] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:17:43,669 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:43] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:17:45,142 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:45] "GET /products/ HTTP/1.1" 200 -
+2026-05-17 12:17:45,191 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:45] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:17:45,196 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:45] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:17:45,203 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:45] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:17:45,205 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:45] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:17:45,269 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:45] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:17:45,905 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:45] "GET /dashboard HTTP/1.1" 200 -
+2026-05-17 12:17:45,974 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:45] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:17:45,978 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:45] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:17:45,981 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:45] "[36mGET /static/js/analytics.js HTTP/1.1[0m" 304 -
+2026-05-17 12:17:45,983 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:45] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:17:46,023 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:46] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:17:46,060 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:46] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:17:48,715 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:48] "GET /search/?q= HTTP/1.1" 200 -
+2026-05-17 12:17:48,774 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:48] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:17:48,783 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:48] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:17:48,787 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:48] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:17:48,793 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:48] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:17:48,874 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:48] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:17:54,648 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:54] "GET /search/?q=book HTTP/1.1" 200 -
+2026-05-17 12:17:54,735 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:54] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:17:54,739 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:54] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:17:54,745 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:54] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:17:54,747 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:54] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:17:54,805 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:17:54] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:18:00,519 ERROR [app] Exception on /profile/ [GET]
+Traceback (most recent call last):
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\routes\profile.py", line 13, in profile
+    @login_required
+               ^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\profile\profile.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\base.html", line 139, in top-level template code
+    <div class="toast-body">{{ message }}</div>
+    ^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\profile\profile.html", line 32, in block 'content'
+    {{ form_image.hidden_tag() }}
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'form_image' is undefined
+2026-05-17 12:18:00,530 ERROR [app] Unhandled application error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+Traceback (most recent call last):
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\routes\profile.py", line 13, in profile
+    @login_required
+               ^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\profile\profile.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\base.html", line 139, in top-level template code
+    <div class="toast-body">{{ message }}</div>
+    ^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\profile\profile.html", line 32, in block 'content'
+    {{ form_image.hidden_tag() }}
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'form_image' is undefined
+2026-05-17 12:18:00,537 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:18:00] "[35m[1mGET /profile/ HTTP/1.1[0m" 500 -
+2026-05-17 12:18:00,576 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:18:00] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:18:00,586 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:18:00] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:18:00,588 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:18:00] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:18:00,590 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:18:00] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:18:00,658 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:18:00] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:18:04,076 ERROR [app] Exception on /profile/settings [GET]
+Traceback (most recent call last):
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\routes\profile.py", line 62, in settings
+    error = next(iter(form.image.errors), 'Invalid image file.')
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\profile\settings.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\base.html", line 139, in top-level template code
+    <div class="toast-body">{{ message }}</div>
+    ^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\profile\settings.html", line 13, in block 'content'
+    {{ form.hidden_tag() }}
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'form' is undefined
+2026-05-17 12:18:04,091 ERROR [app] Unhandled application error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+Traceback (most recent call last):
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\routes\profile.py", line 62, in settings
+    error = next(iter(form.image.errors), 'Invalid image file.')
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\profile\settings.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\base.html", line 139, in top-level template code
+    <div class="toast-body">{{ message }}</div>
+    ^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\profile\settings.html", line 13, in block 'content'
+    {{ form.hidden_tag() }}
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'form' is undefined
+2026-05-17 12:18:04,102 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:18:04] "[35m[1mGET /profile/settings HTTP/1.1[0m" 500 -
+2026-05-17 12:18:04,142 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:18:04] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:18:04,151 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:18:04] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:18:04,151 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:18:04] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:18:04,153 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:18:04] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:18:04,213 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:18:04] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:18:04,639 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:18:04] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:18:05,254 ERROR [app] Exception on /profile/settings [GET]
+Traceback (most recent call last):
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\routes\profile.py", line 62, in settings
+    error = next(iter(form.image.errors), 'Invalid image file.')
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\profile\settings.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\base.html", line 139, in top-level template code
+    <div class="toast-body">{{ message }}</div>
+    ^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\profile\settings.html", line 13, in block 'content'
+    {{ form.hidden_tag() }}
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'form' is undefined
+2026-05-17 12:18:05,259 ERROR [app] Unhandled application error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+Traceback (most recent call last):
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\routes\profile.py", line 62, in settings
+    error = next(iter(form.image.errors), 'Invalid image file.')
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\profile\settings.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\base.html", line 139, in top-level template code
+    <div class="toast-body">{{ message }}</div>
+    ^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\profile\settings.html", line 13, in block 'content'
+    {{ form.hidden_tag() }}
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'form' is undefined
+2026-05-17 12:18:05,269 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:18:05] "[35m[1mGET /profile/settings HTTP/1.1[0m" 500 -
+2026-05-17 12:18:05,305 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:18:05] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:18:05,315 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:18:05] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:18:05,316 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:18:05] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:18:05,318 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:18:05] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:18:05,367 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:18:05] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:18:06,301 ERROR [app] Exception on /profile/settings [GET]
+Traceback (most recent call last):
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\routes\profile.py", line 62, in settings
+    error = next(iter(form.image.errors), 'Invalid image file.')
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\profile\settings.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\base.html", line 139, in top-level template code
+    <div class="toast-body">{{ message }}</div>
+    ^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\profile\settings.html", line 13, in block 'content'
+    {{ form.hidden_tag() }}
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'form' is undefined
+2026-05-17 12:18:06,313 ERROR [app] Unhandled application error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+Traceback (most recent call last):
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\routes\profile.py", line 62, in settings
+    error = next(iter(form.image.errors), 'Invalid image file.')
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\profile\settings.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\base.html", line 139, in top-level template code
+    <div class="toast-body">{{ message }}</div>
+    ^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\app\templates\profile\settings.html", line 13, in block 'content'
+    {{ form.hidden_tag() }}
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vadra\OneDrive\Desktop\Inventory_app\venv\Lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'form' is undefined
+2026-05-17 12:18:06,325 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:18:06] "[35m[1mGET /profile/settings HTTP/1.1[0m" 500 -
+2026-05-17 12:18:06,360 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:18:06] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:18:06,370 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:18:06] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:18:06,373 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:18:06] "[33mGET /static/profile_images/default.png HTTP/1.1[0m" 404 -
+2026-05-17 12:18:06,371 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:18:06] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:18:06,430 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:18:06] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:18:34,654 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:18:34] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:18:36,437 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:18:36] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:19:04,639 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:19:04] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:19:06,430 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:19:06] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:19:34,640 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:19:34] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:19:36,444 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:19:36] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:20:02,808 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:20:02] "[32mGET /auth/logout HTTP/1.1[0m" 302 -
+2026-05-17 12:20:02,841 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:20:02] "GET /auth/login HTTP/1.1" 200 -
+2026-05-17 12:20:02,954 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:20:02] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-05-17 12:20:02,956 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:20:02] "[36mGET /static/js/ui.js HTTP/1.1[0m" 304 -
+2026-05-17 12:20:02,962 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:20:02] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-05-17 12:20:04,653 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:20:04] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:20:34,657 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:20:34] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:21:04,664 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:21:04] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:21:34,645 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:21:34] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:22:04,647 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:22:04] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:22:34,906 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:22:34] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:23:04,641 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:23:04] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:23:34,657 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:23:34] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:24:04,657 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:24:04] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:24:34,648 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:24:34] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:25:04,653 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:25:04] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:25:34,650 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:25:34] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:26:04,655 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:26:04] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:26:34,647 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:26:34] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:27:04,652 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:27:04] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:27:34,649 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:27:34] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:28:04,644 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:28:04] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:28:34,644 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:28:34] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:29:04,646 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:29:04] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:29:34,645 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:29:34] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:30:04,636 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:30:04] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:30:34,899 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:30:34] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:31:04,901 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:31:04] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:31:41,332 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:31:41] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:32:04,637 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:32:04] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:32:34,646 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:32:34] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:33:04,641 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:33:04] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:33:34,638 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:33:34] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:34:04,886 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:34:04] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:34:34,904 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:34:34] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:35:35,897 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:35:35] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:36:09,918 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:36:09] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 12:36:34,645 INFO [werkzeug] 127.0.0.1 - - [17/May/2026 12:36:34] "GET /notifications/recent HTTP/1.1" 200 -
+2026-05-17 13:40:40,277 WARNING [app] flask-limiter is not installed; login rate limiting is disabled.
+2026-05-17 13:41:06,814 WARNING [app] flask-limiter is not installed; login rate limiting is disabled.
+2026-05-17 13:41:19,246 WARNING [app] flask-limiter is not installed; login rate limiting is disabled.
+2026-05-17 13:41:56,254 WARNING [app] flask-limiter is not installed; login rate limiting is disabled.
+2026-05-17 13:42:47,484 WARNING [app] flask-limiter is not installed; login rate limiting is disabled.
+2026-05-17 13:42:59,195 WARNING [app] flask-limiter is not installed; login rate limiting is disabled.
+2026-05-17 14:12:18,330 WARNING [app] flask-limiter is not installed; login rate limiting is disabled.
+2026-05-17 14:12:18,750 INFO [app] Skipping database bootstrap during migration command.
+2026-05-17 14:12:33,513 WARNING [app] flask-limiter is not installed; login rate limiting is disabled.
+2026-05-17 14:12:52,329 WARNING [app] flask-limiter is not installed; login rate limiting is disabled.
+2026-05-17 14:12:52,917 INFO [app] Skipping default admin creation because users table is missing columns: api_token, bio, created_at, dashboard_density, email_notifications, is_active, phone, preferred_theme, profile_image
+2026-05-17 14:13:06,557 WARNING [app] flask-limiter is not installed; login rate limiting is disabled.
